@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:SparkButtonSkin xmlns:fx="http://ns.adobe.com/mxml/2009" 
+             xmlns:s="library://ns.adobe.com/flex/spark" 
+             xmlns:fb="http://ns.adobe.com/flashbuilder/2009"
+             minWidth="21" minHeight="21" 
+             alpha.disabled="0.5">
+     
+    <fx:Metadata>
+        [HostComponent("spark.components.Button")]
+    </fx:Metadata>
+    
+    <fx:Script>
+        override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number) : void
+        {
+			super.updateDisplayList(unscaledWidth, unscaledHeight);
+			
+            var backgroundColor:Number = getStyle("backgroundColor");
+			
+			if (!isNaN(backgroundColor))
+			{
+				this.backgroundColor.color = backgroundColor;
+			}
+        }
+    </fx:Script>
+        
+    <s:states>
+        <s:State name="up" />
+        <s:State name="over" />
+        <s:State name="down" />
+        <s:State name="disabled" />
+    </s:states>
+    
+	<s:Rect top="0" bottom="0" left="0" right="0">
+		<s:stroke>
+			<s:SolidColorStroke id="borderColor" color="{getStyle('borderColor')}" weight="4"/>
+		</s:stroke>
+		<s:fill>
+			<s:SolidColor id="backgroundColor" color="#ff0000"/>
+		</s:fill>
+	</s:Rect>
+
+    <s:Label id="labelDisplay"
+             textAlign="center"
+             maxDisplayedLines="1"
+             horizontalCenter="0" verticalCenter="1" verticalAlign="middle"
+             left="10" right="10" top="6" bottom="6">
+    </s:Label>
+    
+</s:SparkButtonSkin>

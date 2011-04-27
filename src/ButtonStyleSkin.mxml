@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   fontSize="24">
+	
+	<fx:Style>
+		.BlueButton {
+			borderColor: #ffff00;
+			backgroundColor: #0000ff;
+			color: #ffffff;
+		}
+	</fx:Style>
+	
+	<s:layout><s:TileLayout paddingBottom="10" paddingLeft="10" paddingRight="10" paddingTop="10" horizontalGap="20" verticalGap="20"/></s:layout>
+	
+	<s:Button label="change the button background color" skinClass="MyButtonSkin">
+		<s:click>
+			event.currentTarget.setStyle('backgroundColor', Math.random() * 0xffffff);
+		</s:click>
+	</s:Button>
+	
+	<s:Button label="this one is set via css" skinClass="MyButtonSkin" styleName="BlueButton"/>
+	
+	<s:Button label="change the border color" skinClass="MyButtonSkin">
+		<s:click>
+			event.currentTarget.setStyle("borderColor", Math.random() * 0xffffff);
+		</s:click>
+	</s:Button>
+	
+	<s:Button label="change the border color for all Buttons" skinClass="MyButtonSkin">
+		<s:click>
+			var sb:CSSStyleDeclaration = styleManager.getStyleDeclaration("spark.components.Button");
+			if (sb == null)
+			{
+				sb = new CSSStyleDeclaration();
+				styleManager.setStyleDeclaration("spark.components.Button", sb, true);
+			}
+			sb.setStyle("borderColor", Math.random() * 0xffffff);
+		</s:click>
+	</s:Button>
+	
+</s:Application>
